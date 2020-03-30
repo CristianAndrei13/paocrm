@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * Employee domain
  */
-public class Employee extends BasicDomain {
+public class Employee extends BasicDomain implements Comparable<Employee> {
 
     public final static int DAYS_VACATION_BASIC = 21, DAYS_VACATION_MANAGEMENT = 45;
 
@@ -49,11 +49,7 @@ public class Employee extends BasicDomain {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "user=" + user +
-                ", company=" + company +
-                ", jobTitle=" + jobTitle +
-                '}';
+        return user.getFirstName() + " " + user.getLastName() + " - " + jobTitle;
     }
 
     public User getUser() {
@@ -110,5 +106,27 @@ public class Employee extends BasicDomain {
 
     public void setStartDateOfActivity(Date startDateOfActivity) {
         this.startDateOfActivity = startDateOfActivity;
+    }
+
+    @Override
+    public int compareTo(Employee employee) {
+        if (employee.id == this.id) {
+            return 0;
+        }
+
+        int jobTitleCompare = this.getJobTitle().compareTo(employee.getJobTitle());
+        if (jobTitleCompare > 0) {
+            return 1;
+        } else if (jobTitleCompare < 0) {
+            return -1;
+        }
+
+        if (this.currentWage.getGrossAmountPerHour() > employee.currentWage.getGrossAmountPerHour()) {
+            return 1;
+        } else if (this.currentWage.getGrossAmountPerHour() < employee.currentWage.getGrossAmountPerHour()) {
+            return -1;
+        }
+
+        return 0;
     }
 }

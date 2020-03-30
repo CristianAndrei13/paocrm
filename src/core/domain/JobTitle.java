@@ -5,7 +5,7 @@ import core.domain.helper.BasicDomain;
 /**
  * JobTitle class
  */
-public class JobTitle extends BasicDomain {
+public class JobTitle extends BasicDomain implements Comparable<JobTitle> {
 
     /**
      * Name of job title
@@ -88,5 +88,50 @@ public class JobTitle extends BasicDomain {
 
     public void setBaseGrossSalary(float baseGrossSalary) {
         this.baseGrossSalary = baseGrossSalary;
+    }
+
+    @Override
+    public int compareTo(JobTitle jobTitle) {
+        if (jobTitle.id == this.id) {
+            return 0;
+        }
+
+        if (this.leadershipPosition && !jobTitle.leadershipPosition) {
+            return 1;
+        } else if (!this.leadershipPosition && jobTitle.leadershipPosition) {
+            return -1;
+        }
+
+        if (jobTitle.superiorPosition == this) {
+            return 1;
+        } else if (this.superiorPosition == jobTitle) {
+            return -1;
+        } else if (jobTitle.coordinatingPosition == this) {
+            return -1;
+        } else if (this.coordinatingPosition == jobTitle) {
+            return 1;
+        }
+
+        JobTitle nextPosition = this.superiorPosition;
+        while (nextPosition != null) {
+            if (nextPosition.getId() == jobTitle.getId()) {
+                return -1;
+            }
+            nextPosition = this.coordinatingPosition;
+        }
+
+        nextPosition = jobTitle.superiorPosition;
+        while (nextPosition != null) {
+            if (nextPosition.getId() == this.getId()) {
+                return 1;
+            }
+            nextPosition = this.coordinatingPosition;
+        }
+
+        if (this.baseGrossSalary == jobTitle.baseGrossSalary) {
+            return 0;
+        }
+
+        return this.baseGrossSalary > jobTitle.baseGrossSalary ? 1 : -1;
     }
 }

@@ -9,7 +9,7 @@ public class WageTaxRepository {
     public ArrayList<WageTax> findBasicTaxes() {
         //TODO: search in real db
 
-        ArrayList<WageTax> fakeWageTaxData = new ArrayList<WageTax>();
+        ArrayList<WageTax> fakeWageTaxData = new ArrayList<>();
 
         WageTax wage1 = new WageTax();
         wage1.setId(RandomGenerator.generateId());

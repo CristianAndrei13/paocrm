@@ -54,6 +54,10 @@ public class WageService {
         return netWage;
     }
 
+    public float calculateMonthlyNetWageForEmployee(Employee employee) {
+        return this.calculateNetWageForEmployee(employee) * employee.getWeeklyWorkingHours() * 4;
+    }
+
     private Wage buildWage(Employee employee) {
         Wage wage = new Wage();
 

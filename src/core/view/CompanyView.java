@@ -7,18 +7,18 @@ public class CompanyView {
 
     public static String companyReport(Company company) {
 
-        StringBuilder companyReportText = new StringBuilder("Name of company: " + company + "\n" +
+        StringBuilder companyReportText = new StringBuilder("---------\n" +
+                "ID company: " + company.getId() + "\n" +
+                "Name of company: " + company + "\n" +
                 "Date of establishment: " + company.getDateOfEstablishment() + "\n" +
                 "Website domain: " + company.getWebsiteDomain() + "\n" +
-                "Employees list: \n");
+                "Employees list: \n" + "---------\n");
 
         for (Employee employee : company.getEmployees()) {
-            companyReportText.append("Employee ID: ").append(employee.getId()).append("\n");
-            companyReportText.append("Employee name: ").append(employee.getUser().getFirstName()).append(" ").append(employee.getUser().getLastName()).append("\n");
-            companyReportText.append("Employee email: ").append(employee.getUser().getEmail()).append("\n");
-            companyReportText.append("Employee position: ").append(employee.getJobTitle()).append("\n");
-            companyReportText.append("Employee wage: ").append(employee.getCurrentWage()).append("\n");
+            companyReportText.append(EmployeeView.employeeDetails(employee)).append("--------\n");
         }
+
+        companyReportText.append("\n");
 
         return companyReportText.toString();
     }

@@ -2,8 +2,7 @@ package core.domain;
 
 import core.domain.helper.BasicDomain;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 
 /**
  * Company model
@@ -33,12 +32,16 @@ public class Company extends BasicDomain {
     /**
      * List of employees from company
      */
-    private ArrayList<Employee> employees = new ArrayList<>();
+    private TreeSet<Employee> employees;
 
     /**
      * Website domain
      */
     private String websiteDomain;
+
+    public Company() {
+        this.employees = new TreeSet<>(Comparator.reverseOrder());
+    }
 
     @Override
     public String toString() {
@@ -77,7 +80,7 @@ public class Company extends BasicDomain {
         this.dateOfEstablishment = dateOfEstablishment;
     }
 
-    public ArrayList<Employee> getEmployees() {
+    public TreeSet<Employee> getEmployees() {
         return employees;
     }
 
