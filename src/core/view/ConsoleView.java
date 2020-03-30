@@ -1,7 +1,16 @@
 package core.view;
 
+import core.datafixture.CompanyFactory;
 import core.domain.Company;
+import core.domain.Employee;
+import core.domain.JobTitle;
+import core.persistence.CompanyRepository;
+import core.services.EmployeeService;
+import user.domain.User;
+import user.services.UserBuilder;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class ConsoleView {
@@ -9,10 +18,10 @@ public class ConsoleView {
     private Scanner s = new Scanner(System.in);
 
     public static void main(String[] args) {
-        ConsoleView app = new ConsoleView();
+        CompanyRepository companyRepository = new CompanyRepository();
 
-        Company company = new Company();
+        ArrayList<Company> companies = companyRepository.findAll();
 
-        System.out.println(company);
+        companies.forEach(company -> System.out.println(CompanyView.companyReport(company)));
     }
 }

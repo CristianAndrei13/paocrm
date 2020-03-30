@@ -11,7 +11,11 @@ public interface UserInterface {
 
     String getUsername();
 
+    String getPassword();
+
     Map<String, RoleInterface> getRoles();
+
+    boolean hasRole(RoleInterface role);
 
     void addRole(RoleInterface role);
 

@@ -31,7 +31,7 @@ public class Project extends BasicDomain {
     /**
      * Employees who work on this project
      */
-    private ArrayList<Employee> teamMembers;
+    private ArrayList<Employee> teamMembers = new ArrayList<>();
 
     /**
      * Project manager

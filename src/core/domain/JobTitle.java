@@ -32,6 +32,16 @@ public class JobTitle extends BasicDomain {
      */
     private JobTitle coordinatingPosition;
 
+    /**
+     * Base gross salary for this position
+     */
+    private float baseGrossSalary;
+
+    @Override
+    public String toString() {
+        return this.name + " - " + this.department;
+    }
+
     public String getName() {
         return name;
     }
@@ -70,5 +80,13 @@ public class JobTitle extends BasicDomain {
 
     public void setCoordinatingPosition(JobTitle coordinatingPosition) {
         this.coordinatingPosition = coordinatingPosition;
+    }
+
+    public float getBaseGrossSalary() {
+        return baseGrossSalary;
+    }
+
+    public void setBaseGrossSalary(float baseGrossSalary) {
+        this.baseGrossSalary = baseGrossSalary;
     }
 }

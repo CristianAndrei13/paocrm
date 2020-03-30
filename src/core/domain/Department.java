@@ -19,5 +19,28 @@ public class Department extends BasicDomain {
      */
     private ArrayList<Employee> employees;
 
+    public Department(String name) {
+        this.name = name;
+    }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ArrayList<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(ArrayList<Employee> employees) {
+        this.employees = employees;
+    }
 }

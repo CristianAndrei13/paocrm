@@ -22,12 +22,17 @@ public class Wage extends BasicDomain {
     /**
      * Taxes of employee gross salary
      */
-    private ArrayList<WageTax> taxes;
+    private ArrayList<WageTax> taxes = new ArrayList<>();
 
     /**
      * If this is the current employee wage, then is true
      */
     private boolean isCurrent;
+
+    @Override
+    public String toString() {
+        return this.grossAmountPerHour + "$";
+    }
 
     public Employee getEmployee() {
         return employee;
@@ -49,8 +54,12 @@ public class Wage extends BasicDomain {
         return taxes;
     }
 
-    public void setTaxes(ArrayList<WageTax> taxes) {
-        this.taxes = taxes;
+    public void addTax(WageTax tax) {
+        this.taxes.add(tax);
+    }
+
+    public void removeTax(WageTax tax) {
+        this.taxes.remove(tax);
     }
 
     public boolean isCurrent() {

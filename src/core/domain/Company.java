@@ -33,7 +33,12 @@ public class Company extends BasicDomain {
     /**
      * List of employees from company
      */
-    private ArrayList<Employee> employees;
+    private ArrayList<Employee> employees = new ArrayList<>();
+
+    /**
+     * Website domain
+     */
+    private String websiteDomain;
 
     @Override
     public String toString() {
@@ -82,5 +87,13 @@ public class Company extends BasicDomain {
 
     public void removeEmployee(Employee employee) {
         this.employees.remove(employee);
+    }
+
+    public String getWebsiteDomain() {
+        return websiteDomain;
+    }
+
+    public void setWebsiteDomain(String websiteDomain) {
+        this.websiteDomain = websiteDomain;
     }
 }

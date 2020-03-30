@@ -10,6 +10,12 @@ import java.util.Map;
 abstract public class AbstractUser implements UserInterface {
 
     /**
+     * Basic roles
+     */
+    public static final Role ROLE_ADMIN = new Role("ROLE_ADMIN", "ADMIN", true);
+    public static final Role ROLE_SIMPLE_USER = new Role("ROLE_SIMPLE_USER", "SIMPLE USER", true);
+
+    /**
      * ID of User
      */
     protected int id;
@@ -18,6 +24,11 @@ abstract public class AbstractUser implements UserInterface {
      * Username of User
      */
     protected String username;
+
+    /**
+     * Password of User
+     */
+    protected String password;
 
     /**
      * Roles collection of user
@@ -33,6 +44,11 @@ abstract public class AbstractUser implements UserInterface {
      * Date of last update
      */
     protected Date updated;
+
+    public AbstractUser() {
+        // Guarantee that every user have "Simple user" role
+        roles.put(ROLE_SIMPLE_USER.getCode(), ROLE_SIMPLE_USER);
+    }
 
     @Override
     public int getId() {
@@ -53,8 +69,22 @@ abstract public class AbstractUser implements UserInterface {
     }
 
     @Override
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
     public Map<String, RoleInterface> getRoles() {
         return this.roles;
+    }
+
+    @Override
+    public boolean hasRole(RoleInterface role) {
+        return this.roles.get(role.getCode()) != null;
     }
 
     @Override

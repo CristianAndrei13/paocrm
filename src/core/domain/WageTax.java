@@ -31,4 +31,54 @@ public class WageTax extends BasicDomain {
      * Type of amount: fixed or percentage
      */
     private int typeOfAmount;
+
+    /**
+     * Amount of tax, if is fixed
+     */
+    private float amount;
+
+    /**
+     * Percentage of tax, if is percentage
+     */
+    private float percentage;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getTypeOfAmount() {
+        return typeOfAmount;
+    }
+
+    public void setTypeOfAmount(int typeOfAmount) {
+        this.typeOfAmount = typeOfAmount;
+    }
+
+    public float getAmount() {
+        return amount;
+    }
+
+    public void setAmount(float amount) {
+        this.amount = amount;
+    }
+
+    public float getPercentage() {
+        return percentage;
+    }
+
+    public void setPercentage(float percentage) {
+        this.percentage = percentage;
+    }
 }

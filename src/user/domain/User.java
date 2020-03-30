@@ -37,6 +37,11 @@ public class User extends AbstractUser {
      */
     private Address address;
 
+    @Override
+    public String toString() {
+        return this.username != null ? this.username : ("#" + this.id + " " + this.firstName + " " + this.lastName);
+    }
+
     public String getFirstName() {
         return firstName;
     }

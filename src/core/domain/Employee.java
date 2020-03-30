@@ -10,6 +10,8 @@ import java.util.Date;
  */
 public class Employee extends BasicDomain {
 
+    public final static int DAYS_VACATION_BASIC = 21, DAYS_VACATION_MANAGEMENT = 45;
+
     /**
      * User who assigned on this employee (One-to-one rel)
      */
@@ -44,6 +46,15 @@ public class Employee extends BasicDomain {
      * First day on this position
      */
     private Date startDateOfActivity;
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "user=" + user +
+                ", company=" + company +
+                ", jobTitle=" + jobTitle +
+                '}';
+    }
 
     public User getUser() {
         return user;

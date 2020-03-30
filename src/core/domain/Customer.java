@@ -17,7 +17,7 @@ public class Customer extends BasicDomain {
     /**
      * Projects of this customer
      */
-    private ArrayList<Project> projects;
+    private ArrayList<Project> projects = new ArrayList<>();
 
     public String getName() {
         return name;
