@@ -36,6 +36,15 @@ public class EmployeeService {
     }
 
     /**
+     * Promote employee
+     */
+    public void promoteEmployee(Employee employee, JobTitle newJobTitle) {
+        employee.setJobTitle(newJobTitle);
+
+        wageService.newWageForEmployee(employee, newJobTitle.getBaseGrossSalary());
+    }
+
+    /**
      * Get company email
      */
     public static String createCompanyEmail(Employee employee) {

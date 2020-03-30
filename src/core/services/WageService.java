@@ -33,6 +33,17 @@ public class WageService {
         return wage;
     }
 
+    public Wage newWageForEmployee(Employee employee, float newWage) {
+        employee.getCurrentWage().setCurrent(false);
+
+        Wage wage = this.buildWage(employee);
+        wage.setGrossAmountPerHour(newWage);
+
+        this.assignBasicTaxesToWage(wage);
+
+        return wage;
+    }
+
     public void assignBasicTaxesToWage(Wage wage) {
         ArrayList<WageTax> taxes = this.wageTaxRepository.findBasicTaxes();
 

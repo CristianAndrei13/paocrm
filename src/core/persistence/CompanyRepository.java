@@ -1,6 +1,7 @@
 package core.persistence;
 
 import core.datafixture.CompanyFactory;
+import core.domain.Employee;
 import util.fixtures.RandomFixtures;
 import core.domain.Company;
 
@@ -25,6 +26,16 @@ public class CompanyRepository {
         for(Company company: companies) {
             if(company.getId() == id) {
                 return company;
+            }
+        }
+
+        return null;
+    }
+
+    public Employee findEmployeeById(Company company, int id) {
+        for(Employee employee: company.getEmployees()) {
+            if(employee.getId() == id) {
+                return employee;
             }
         }
 
